@@ -27,3 +27,18 @@
     background-position: left 10px center;
   }
 }
+
+.main {
+  @include container();
+
+  padding: 40px 0;
+  display: flex;
+}
+
+.user {
+  width: 300px;
+}
+
+.repos {
+  width: calc(100% - 300px);
+}
