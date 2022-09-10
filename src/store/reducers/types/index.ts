@@ -5,5 +5,5 @@ export type initialStateType = {
   error: string;
   isLoading: boolean;
   user: User;
-  userRepo: UserRepo
+  userRepos: UserRepo[]
 }

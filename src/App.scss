@@ -1,0 +1,29 @@
+@import "common/style/variables";
+@import "common/style/mixins";
+
+.header {
+  padding: 10px 0;
+  background: $themeColor;
+
+  .container {
+    @include container();
+
+    display: flex;
+  }
+
+  .header_logo {
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .header_search {
+    height: 44px;
+    min-width: 400px;
+    padding: 8px 10px 8px 44px;
+    border-radius: 6px;
+
+    background-image: url("./assets/icon/image.png");
+    background-repeat: no-repeat;
+    background-position: left 10px center;
+  }
+}
