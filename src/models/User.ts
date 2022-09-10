@@ -9,5 +9,6 @@ export type User = {
   company: string | null;
   email: string | null;
   followers: number;
+  following: number;
   created_at: string;
 }

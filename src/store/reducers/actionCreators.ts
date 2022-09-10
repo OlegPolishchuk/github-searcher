@@ -1,12 +1,12 @@
 import {createAsyncThunk} from "@reduxjs/toolkit";
-import {UserReposAPI} from "api/userRepos";
+import {UserReposAPI} from "api/data";
 import {AxiosError} from "axios";
 
-export const fetchRepos = createAsyncThunk(
+export const fetchData = createAsyncThunk(
   'user/fetchRepos',
   async (username: string, thunkApi) => {
     try {
-      return await UserReposAPI.fetchRepos(username);
+      return await UserReposAPI.fetchData(username);
     } catch (e) {
       const error = e as AxiosError;
 

@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchRepos} from "store/reducers/actionCreators";
+import {fetchData} from "store/reducers/actionCreators";
 import {initialStateType} from "store/reducers/types";
 import {User} from "models/User";
 
@@ -29,8 +29,9 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchRepos.fulfilled, (state, action)=> {
-      state.userRepos = action.payload
+    builder.addCase(fetchData.fulfilled, (state, action)=> {
+      state.user = action.payload[0];
+      state.userRepos = action.payload[1];
     })
   }
 })

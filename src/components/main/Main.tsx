@@ -4,22 +4,15 @@ import {Repos} from "components/repos/Repos";
 import {useAppSelector} from "hooks";
 import {NotFound} from "components/notFound/NotFound";
 
-import searchIcon from 'assets/icon/search_icon_large.png';
-import userIcon from 'assets/icon/user-icon.png';
-
 export const Main = () => {
+  console.log('main rendered')
   const { userRepos } = useAppSelector(state => state.user);
-  const { user } = useAppSelector(state => state.user)
-  const { title } = useAppSelector(state => state.user)
-
-  console.log(`user =>`, user)
-  console.log(`userRepo =>`, userRepos)
+  const { title } = useAppSelector(state => state.user);
+  const { user }  = useAppSelector(state => state.user);
 
   if (userRepos.length === 0) {
-
-    console.log('sadfsdef')
     return (
-      <main className='main container'>
+      <main className='main'>
         <NotFound iconType='search' title={title}/>
       </main>
     )
@@ -27,7 +20,7 @@ export const Main = () => {
 
   return (
     <main className='main'>
-      <UserDescription />
+      <UserDescription  user={user}/>
       <Repos />
     </main>
   )

@@ -11,3 +11,10 @@ export type UserRepo = {
   forks_count: number;
   language: string;
 }
+
+export type owner = {
+  avatar_url: string;
+  id: number;
+  login: string;
+
+}

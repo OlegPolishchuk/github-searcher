@@ -2,6 +2,7 @@ import React from 'react';
 import {Search} from "components/header/search/Search";
 
 export const Header = () => {
+  console.log('header rendered')
   return (
     <header className='header'>
       <div className='container'>
