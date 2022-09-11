@@ -13,7 +13,10 @@ export const Search = () => {
 
   const handleFetch = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === 'Enter') {
-      dispatch(fetchData(value))
+      setValue( value.trim() )
+      if (value) {
+        dispatch(fetchData(value));
+      }
     }
   }
 
