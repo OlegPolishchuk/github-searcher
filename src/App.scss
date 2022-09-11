@@ -26,7 +26,12 @@
     background-repeat: no-repeat;
     background-position: left 10px center;
 
-    color: $textColor
+    color: $textColor;
+
+    @media screen and (max-width: $smallScreen){
+      min-width: 200px;
+      width: 100%;
+    }
   }
 }
 
@@ -35,6 +40,10 @@
 
   padding: 40px 0;
   display: flex;
+
+  @media screen and (max-width: $smallScreen){
+    flex-direction: column;
+  }
 }
 
 .user {
