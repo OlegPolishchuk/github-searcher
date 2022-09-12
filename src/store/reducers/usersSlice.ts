@@ -1,5 +1,5 @@
 import {createSlice} from "@reduxjs/toolkit";
-import {fetchData} from "store/reducers/actionCreators";
+import {fetchData, fetchRepos} from "store/reducers/actionCreators";
 import {initialStateType} from "store/reducers/types";
 import {User} from "models/User";
 import {PER_PAGE, START_PAGE} from "app-constants";
@@ -38,7 +38,11 @@ export const userSlice = createSlice({
     builder.addCase(fetchData.fulfilled, (state, action)=> {
       state.user = action.payload[0];
       state.userRepos = action.payload[1];
-      state.searchParams.totalPAgeCount = action.payload[1].length;
+      state.searchParams.totalPAgeCount = action.payload[0].public_repos;
+    })
+
+    builder.addCase(fetchRepos.fulfilled, (state, action) => {
+      state.userRepos = action.payload
     })
   }
 })

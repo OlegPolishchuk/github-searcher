@@ -4,14 +4,16 @@ import {useAppDispatch} from "hooks";
 
 type PropsType = {
   pageCount: number;
+  callback: (page: number) => void;
 }
 
-export const Paginator = ({ pageCount }: PropsType) => {
+export const Paginator = ({ pageCount, callback }: PropsType) => {
   const dispatch = useAppDispatch();
 
-  const handlePageClick = () => {
-
+  const handlePageClick = (event: {selected: number}) => {
+      callback(event.selected + 1)
   }
+  console.log(pageCount)
 
   return (
     <>
@@ -27,8 +29,9 @@ export const Paginator = ({ pageCount }: PropsType) => {
         nextLinkClassName='paginator_link'
         previousLabel='<'
         previousLinkClassName='paginator_link'
+        activeLinkClassName='paginator_link active'
         renderOnZeroPageCount={() => null}
-        onPageChange={handlePageClick}
+        onPageChange={(e)=>handlePageClick(e)}
       />
     </>
   )

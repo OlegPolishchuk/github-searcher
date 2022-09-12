@@ -1,5 +1,7 @@
 import {instance} from "api/instaance/instance";
 import {PER_PAGE, START_PAGE} from "app-constants";
+import {User} from "models/User";
+import {UserRepo} from "models/UserRepo";
 
 export class UserReposAPI {
   static fetchData(username: string){
@@ -12,5 +14,9 @@ export class UserReposAPI {
 
   static fetchRepos(username: string,page: number){
     return instance.get(`users/${username}/repos?page=${page}&per_page=${PER_PAGE}`)
+      .then(res =>{
+        console.log(res)
+        return res.data
+      })
   }
 }
