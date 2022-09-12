@@ -15,19 +15,6 @@ const initialState: initialStateType = {
     perPage: PER_PAGE,
     totalPAgeCount: 0,
   }
-  // user: {
-  //   name: '',
-  //   avatar_url: '',
-  //   company: '',
-  //   created_at: '',
-  //   email: '',
-  //   id: 0,
-  //   type: '',
-  //   followers: 0,
-  //   html_url: '',
-  //   login: '',
-  //   repos_url: '',
-  // },
 }
 
 export const userSlice = createSlice({
@@ -35,14 +22,22 @@ export const userSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
+    builder.addCase(fetchData.pending, (state, action) => {
+      state.isLoading = true;
+    })
     builder.addCase(fetchData.fulfilled, (state, action)=> {
       state.user = action.payload[0];
       state.userRepos = action.payload[1];
       state.searchParams.totalPAgeCount = action.payload[0].public_repos;
+      state.isLoading = false;
     })
 
     builder.addCase(fetchRepos.fulfilled, (state, action) => {
-      state.userRepos = action.payload
+      state.userRepos = action.payload;
+      state.isLoading = false;
+    })
+    builder.addCase(fetchRepos.pending, (state, action) => {
+      state.isLoading = true;
     })
   }
 })
