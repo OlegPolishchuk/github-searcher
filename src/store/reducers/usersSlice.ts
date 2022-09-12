@@ -2,6 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 import {fetchData} from "store/reducers/actionCreators";
 import {initialStateType} from "store/reducers/types";
 import {User} from "models/User";
+import {PER_PAGE, START_PAGE} from "app-constants";
 
 const initialState: initialStateType = {
   error: '',
@@ -9,6 +10,11 @@ const initialState: initialStateType = {
   userRepos: [],
   title: 'Start with searching a GitHub user',
   user: {} as User,
+  searchParams: {
+    startPage: START_PAGE,
+    perPage: PER_PAGE,
+    totalPAgeCount: 0,
+  }
   // user: {
   //   name: '',
   //   avatar_url: '',
@@ -32,6 +38,7 @@ export const userSlice = createSlice({
     builder.addCase(fetchData.fulfilled, (state, action)=> {
       state.user = action.payload[0];
       state.userRepos = action.payload[1];
+      state.searchParams.totalPAgeCount = action.payload[1].length;
     })
   }
 })

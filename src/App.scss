@@ -128,3 +128,28 @@
     margin: 16px 0 0 0;
   }
 }
+
+.paginator {
+  display: flex;
+  justify-content: flex-end;
+  color: $textColor;
+  font-size: 18px;
+
+  .paginator_link {
+    padding: 6px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+
+    transition: all .2s ease;
+
+    &:hover {
+      color: #fff;
+      background: $themeColor;
+    }
+
+    .active {
+      color: #fff;
+      background: $themeColor;
+    }
+  }
+}

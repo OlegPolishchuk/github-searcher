@@ -4,6 +4,7 @@ export type User = {
   avatar_url: string;
   html_url: string;
   repos_url: string;
+  public_repos: number;
   type: string;
   name: string
   company: string | null;
